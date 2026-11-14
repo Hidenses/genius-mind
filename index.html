@@ -1,43 +1,101 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Genius Mind</title>
+<title>GENIUS MIND</title>
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #07152f;
-  color: white;
-  text-align: center;
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial;
+ background:#07152e;
+ color:white;
+ text-align:center;
 }
-header {
-  background: #e32636;
-  padding: 25px;
+header{
+ background:#102c60;
+ padding:22px;
+ border-bottom:3px solid red;
 }
-h1 {font-size: 38px;}
-main {padding: 50px 20px;}
-button {
-  background: #e32636;
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
+h1{color:#ff3030;font-size:32px}
+.hero{padding:55px 15px}
+.hero h2{font-size:28px}
+p{color:#d5e1ff}
+button{
+ background:#ed2638;
+ color:white;
+ border:0;
+ padding:13px 22px;
+ border-radius:9px;
+ font-size:16px;
+ cursor:pointer;
 }
+.card{
+ background:#122b55;
+ margin:15px;
+ padding:22px;
+ border-radius:15px;
+}
+input{
+ padding:13px;
+ width:90%;
+ border-radius:8px;
+ border:0;
+ margin:10px;
+}
+footer{padding:25px;color:#aaa}
 </style>
 </head>
 <body>
+
 <header>
 <h1>GENIUS MIND</h1>
-</header>
-<main>
-<h2>Welcome to Genius Mind</h2>
 <p>Think Smart. Learn More. Grow Faster.</p>
-<button>Explore Now</button>
-</main>
+</header>
+
+<section class="hero">
+<h2>Welcome to Genius Mind</h2>
+<p>Your Journey to Smart Learning Starts Here!</p>
+<button onclick="document.getElementById('learn').scrollIntoView()">
+Explore Now
+</button>
+</section>
+
+<div id="learn">
+<div class="card">
+<h2>📚 Online Learning</h2>
+<p>Learn new things every day.</p>
+</div>
+
+<div class="card">
+<h2>🧠 Smart Quiz</h2>
+<p>Test your knowledge and improve.</p>
+<button onclick="alert('Quizzes Coming Soon!')">Start Quiz</button>
+</div>
+
+<div class="card">
+<h2>🤖 AI Chat</h2>
+<p>Ask questions and explore ideas.</p>
+<input id="question" placeholder="Write your question">
+<button onclick="askAI()">Ask Question</button>
+<p id="answer"></p>
+</div>
+</div>
+
+<footer>
+© 2026 GENIUS MIND
+</footer>
+
+<script>
+function askAI(){
+let q=document.getElementById('question').value;
+document.getElementById('answer').innerText=
+q ? "AI Chat connection is coming soon. Your question: "+q :
+"Please write a question first.";
+}
+</script>
+
 </body>
 </html>
