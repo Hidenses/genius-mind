@@ -291,6 +291,75 @@ function nextQuestion() {
 }
 
 </script>
+
+<style>
+.ai-chat {
+  background: #122b55;
+  color: white;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+.ai-chat input {
+  width: 95%;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+.ai-chat button {
+  background: red;
+  color: white;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+}
+#aiReply {
+  background: white;
+  color: #122b55;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+</style>
+
+<div class="ai-chat">
+  <h2>🤖 GENIUS AI CHAT</h2>
+  <p>Ask anything and learn something new!</p>
+
+  <input id="aiQuestion"
+    placeholder="Write your question...">
+
+  <button onclick="askAI()">Ask Question</button>
+
+  <div id="aiReply">
+    Your answer will appear here.
+  </div>
+</div>
+
+<script>
+function askAI() {
+  let q = document.getElementById("aiQuestion")
+    .value.toLowerCase().trim();
+
+  let reply = "Please ask a question about learning!";
+
+  if (q.includes("hello") || q.includes("hi")) {
+    reply = "Hello! Welcome to Genius Mind!";
+  } else if (q.includes("html")) {
+    reply = "HTML is used to create the structure of websites.";
+  } else if (q.includes("css")) {
+    reply = "CSS is used to design and style websites.";
+  } else if (q.includes("javascript")) {
+    reply = "JavaScript makes websites interactive.";
+  } else if (q.includes("pakistan")) {
+    reply = "Islamabad is the capital of Pakistan.";
+  } else if (q.includes("science")) {
+    reply = "Science helps us understand the world around us.";
+  }
+
+  document.getElementById("aiReply").innerText = reply;
+}
+</script>
  
 </body>
 </html>
