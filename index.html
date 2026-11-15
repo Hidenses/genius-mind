@@ -97,5 +97,77 @@ q ? "AI Chat connection is coming soon. Your question: "+q :
 }
 </script>
 
+<style>
+.quick-code {
+  background: #122b55;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+.quick-code textarea {
+  width: 100%;
+  height: 130px;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+}
+.quick-code select {
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+}
+.quick-code button {
+  margin: 5px;
+}
+</style>
+
+<div class="quick-code">
+  <h2>⚡ QUICK SMART CODE</h2>
+  <p>Choose your code language</p>
+
+  <select id="codeType">
+    <option value="html">HTML</option>
+    <option value="css">CSS</option>
+    <option value="js">JavaScript</option>
+  </select>
+
+  <button onclick="makeCode()">Generate Code</button>
+
+  <textarea id="codeOutput"
+    placeholder="Your code will appear here..."></textarea>
+
+  <button onclick="copyCode()">Copy Code</button>
+  <p id="codeMessage"></p>
+</div>
+
+<script>
+function makeCode() {
+  let type = document.getElementById("codeType").value;
+  let code = "";
+
+  if (type === "html") {
+    code = "<!DOCTYPE html>\n<html>\n<head>\n<title>My Website</title>\n</head>\n<body>\n<h1>Hello World!</h1>\n</body>\n</html>";
+  }
+
+  if (type === "css") {
+    code = "body {\n  background: blue;\n  color: white;\n  font-family: Arial;\n}";
+  }
+
+  if (type === "js") {
+    code = "function welcome() {\n  alert('Welcome to Genius Mind!');\n}\nwelcome();";
+  }
+
+  document.getElementById("codeOutput").value = code;
+}
+
+function copyCode() {
+  let output = document.getElementById("codeOutput");
+  output.select();
+  document.execCommand("copy");
+  document.getElementById("codeMessage").innerText =
+    "Code copied successfully!";
+}
+ </script>
+ 
 </body>
 </html>
