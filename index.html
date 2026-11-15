@@ -169,5 +169,128 @@ function copyCode() {
 }
  </script>
  
+<style>
+.smart-quiz {
+  background: #122b55;
+  color: white;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+.smart-quiz button {
+  display: block;
+  margin: 10px 0;
+  padding: 12px;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.smart-quiz .quiz-option {
+  background: white;
+  color: #122b55;
+}
+</style>
+
+<div class="smart-quiz">
+  <h2>🧠 GENIUS SMART QUIZ</h2>
+  <h3 id="question">What is the capital of Pakistan?</h3>
+
+  <div id="options">
+    <button class="quiz-option" onclick="answer(0)">Lahore</button>
+    <button class="quiz-option" onclick="answer(1)">Islamabad</button>
+    <button class="quiz-option" onclick="answer(2)">Karachi</button>
+    <button class="quiz-option" onclick="answer(3)">Multan</button>
+  </div>
+
+  <p id="quizResult">Score: 0</p>
+  <button onclick="nextQuestion()" style="background:#ff3333;color:white">
+    Next Question
+  </button>
+</div>
+
+<script>
+const questions = [
+  {
+    q: "What is the capital of Pakistan?",
+    a: ["Lahore","Islamabad","Karachi","Multan"],
+    correct: 1
+  },
+  {
+    q: "How many days are in a week?",
+    a: ["5","6","7","8"],
+    correct: 2
+  },
+  {
+    q: "Which planet is known as the Red Planet?",
+    a: ["Earth","Mars","Venus","Jupiter"],
+    correct: 1
+  },
+  {
+    q: "What is 5 + 5?",
+    a: ["8","9","10","11"],
+    correct: 2
+  },
+  {
+    q: "Which language is used to structure websites?",
+    a: ["HTML","CSS","Python","Java"],
+    correct: 0
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+function showQuestion() {
+  answered = false;
+  document.getElementById("question").innerText =
+    questions[current].q;
+
+  document.getElementById("options").innerHTML =
+    questions[current].a.map((option, i) =>
+      `<button class="quiz-option" onclick="answer(${i})">${option}</button>`
+    ).join("");
+}
+
+function answer(choice) {
+  if (answered) return;
+  answered = true;
+
+  if (choice === questions[current].correct) {
+    score++;
+    document.getElementById("quizResult").innerText =
+      "Correct! Score: " + score;
+  } else {
+    document.getElementById("quizResult").innerText =
+      "Wrong! Score: " + score;
+  }
+}
+
+function nextQuestion() {
+  if (!answered) {
+    document.getElementById("quizResult").innerText =
+      "Please select an answer first!";
+    return;
+  }
+
+  current++;
+
+  if (current >= questions.length) {
+    document.getElementById("question").innerText =
+      "Quiz Completed! 🎉";
+
+    document.getElementById("options").innerHTML = "";
+    document.getElementById("quizResult").innerText =
+      "Your Final Score: " + score + "/5";
+
+    return;
+  }
+
+  showQuestion();
+}
+
+</script>
+ 
 </body>
 </html>
